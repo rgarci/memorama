@@ -24,10 +24,6 @@ final class userManagerTest extends TestCase
         
     }
 
-    public function testfail(){
-        $this->assertTrue(false);
-    }
-
     public function testSetUserNegativo(){
         $this->dbManager->shouldReceive('insertQuery')->with("INSERT INTO usuario (nombre, clave, tipo) VALUES('Juan','password','0')")->andReturn(false);
         $this->assertEquals(
