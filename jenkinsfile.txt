@@ -13,6 +13,12 @@ pipeline {
       }
     }
 
+    stage('Batch script 1') {
+      steps {
+        bat 'cd C:\Users\rosi\Documents\Escuela\8voSemestre\manteminiento\memorama & git pull origin master'
+      }
+    }
+
   }
   post {
     always {
