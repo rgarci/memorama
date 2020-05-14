@@ -1,0 +1,23 @@
+pipeline {
+  agent any
+  stages {
+    stage('Checkout Scm') {
+      steps {
+        git 'https://github.com/rgarci/memorama.git'
+      }
+    }
+
+    stage('Batch script 0') {
+      steps {
+        bat '.\\vendor\\bin\\phpunit --log-junit test_results.xml'
+      }
+    }
+
+  }
+  post {
+    always {
+      step($class: 'JUnitResultArchiver', testResults: 'test_results.xml')
+    }
+
+  }
+}
